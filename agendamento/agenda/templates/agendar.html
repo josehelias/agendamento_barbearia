@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <header>
+            <h1>Barbearia</h1>
+            <p>Reserve seu horário em menos de 1 minuto</p>
+        </header>
+
+        <main>
+            <article>
+                <p>Escolha com quem você quer ser atendido:</p>
+                <div class="grid-atendentes">
+                    {% for atendente in atendentes %}
+                        <label class="card-atendente">
+                            <input type="radio" name="atendente" value="{{ atendente.id }}" requerid>
+
+                            <div class="info-atendente>
+                                <img src="{{ atendente.profile.foto.url }}" alt="{{ atendente.username }}">
+                                <span>{{ atendente.firt_name }}</span>
+                            </div>
+                        </label>
+                    {% endfor %}
+                </div>
+            </article>
+        </main>
+    </body>
+</html>
+
