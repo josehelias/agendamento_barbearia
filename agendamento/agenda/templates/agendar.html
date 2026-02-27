@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <body>
@@ -9,20 +10,30 @@
         <main>
             <article>
                 <p>Escolha com quem você quer ser atendido:</p>
-                <div class="grid-atendentes">
-                    {% for atendente in atendentes %}
-                        <label class="card-atendente">
-                            <input type="radio" name="atendente" value="{{ atendente.id }}" requerid>
-
-                            <div class="info-atendente>
-                                <img src="{{ atendente.profile.foto.url }}" alt="{{ atendente.username }}">
-                                <span>{{ atendente.firt_name }}</span>
+                <div class="grid-barbeiro">
+                    {% for barbeiro in barbeiros %}
+                        <label class="card-barbeiro">
+                            <input type="radio" name="barbeiro" class="radio-barbeiro" value="{{ barbeiro.id }}" required>
+                            <div class="info-barbeiro">
+                                <span>{{ barbeiro.barb_nome }}</span>
                             </div>
                         </label>
                     {% endfor %}
                 </div>
+                <p>Dia do atendimento:</p>
+                <input type="date" id="id_data" name="data" min="{{ hoje }}">
+            </article>
+
+            <article>
+                <p>Horários disponíveis:</p>
+                <div class="grid-horarios" id="grid-horarios">
+                    <p>Horarios</p>
+                </div>
             </article>
         </main>
+
+        <script src="{% static 'js/agendamento.js' %}"></script>
+
     </body>
 </html>
 
