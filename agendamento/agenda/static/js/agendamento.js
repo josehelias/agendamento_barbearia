@@ -1,5 +1,7 @@
-document.querySelectorAll('.radio-barbeiro').forEach(radio => {
-    radio.addEventListener('change', function(){
+const selectServico = document.querySelector('#barbeiro-select');
+
+
+selectServico.addEventListener('change', function() {
         const barbeiroId = this.value;
         const data = document.getElementById('id_data').value;
         alert('Data selecionada: ' + data);
@@ -35,4 +37,3 @@ document.querySelectorAll('.radio-barbeiro').forEach(radio => {
                 container.innerHTML = "Erro ao carregar horários.";
             });
     });
-});

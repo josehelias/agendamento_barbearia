@@ -2,14 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from datetime import datetime, date
 from django.template import loader
-from .models import Barbeiro
+from .models import Barbeiro, Servico
 from .services import gerar_horarios_disponiveis
 
 def agendamentos(request):
     barbeiros = Barbeiro.objects.all().values()
+    Servicos = Servico.objects.all().values()
     template = loader.get_template('agendar.html')
     context = {
         'barbeiros': barbeiros,
+        'servicos': Servicos,
         'hoje': date.today().strftime("%Y-%m-%d")
     }
     return HttpResponse(template.render(context, request))
