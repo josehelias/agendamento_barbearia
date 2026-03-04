@@ -6,6 +6,10 @@ from .models import Barbeiro, Servico
 from .services import gerar_horarios_disponiveis
 from .form import AgendamentoForm
 
+def home(request):
+    template = loader.get_template('home.html')
+    return HttpResponse(template.render({}, request))
+
 def agendamentos(request):
     if request.method == 'POST':
         print("0")

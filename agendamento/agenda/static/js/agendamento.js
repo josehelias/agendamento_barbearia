@@ -1,24 +1,26 @@
-const selectServico = document.querySelector('#barbeiro-select');
-selectServico.addEventListener('change', function() {
-    const barbeiroId = this.value;
-    const data = document.getElementById('id_data').value;
-    alert('Data selecionada: ' + data);
-    const container = document.getElementById('grid-horarios');
+// Seletores dos elementos
+const selectBarbeiro = document.querySelector('#barbeiro-select');
+const inputData = document.querySelector('#id_data');
+const divHorarios = document.querySelector('#grid-horarios');
 
-    if (!data) {
-        container.innerHTML = "Selecione uma data primeiro.";
+function atualizarHorarios() {
+    const barbeiroId = selectBarbeiro.value;
+    const data = inputData.value;
+
+    if (!barbeiroId || !data) {
+        divHorarios.innerHTML = "Selecione um barbeiro e uma data para ver os horários disponíveis.";
         return;
     }
 
-    container.innerHTML = "Carregando horários...";
+    divHorarios.innerHTML = "Carregando horários...";
 
     fetch(`/buscar-horarios/?barbeiro_id=${barbeiroId}&data=${data}`)
         .then(response => response.json())
         .then(data => {
-            container.innerHTML = "";
+            divHorarios.innerHTML = "";
 
             if (data.horarios.length === 0) {
-                container.innerHTML = "";
+                divHorarios.innerHTML = "Nenhum horário disponível para esta data.";
                 return;
             }
 
@@ -33,10 +35,16 @@ selectServico.addEventListener('change', function() {
 
             html += `</select>`;
 
-            container.innerHTML = html;
+            divHorarios.innerHTML = html;
 
         })
         .catch(() => {
-            container.innerHTML = "Erro ao carregar horários.";
+            divHorarios.innerHTML = "Erro ao carregar horários.";
         });
-});
+}
+// Ouvintes de eventos (Listeners)
+selectBarbeiro.addEventListener('change', atualizarHorarios);
+inputData.addEventListener('change', atualizarHorarios);
+
+// Executa a função ao carregar, caso o navegador tenha mantido valores nos campos
+window.addEventListener('DOMContentLoaded', atualizarHorarios);

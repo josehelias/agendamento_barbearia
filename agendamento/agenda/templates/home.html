@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static % }
+
+{% block content %}
+<section class="hero-home">
+    <div class="hero-content">
+        <h1>Mais que um corte, sua melhor versão.</h1>
+        <a href="{% url 'agendamentos' %}" class="btn-cta">Agendar Agora</a>
+
+        <section>
+            <div class="container stats-grid">
+                <div class="card-stat">
+                    <h3>8+</h3>
+                    <p>Anos de tradição e maestria</p>
+                </div>
+                <div class="card-stat">
+                    <h3>1000+</h3>
+                    <p>Clientes Satisfeitos</p>
+                </div>
+                <div class="card-stat">
+                    <h3>100%</h3>
+                    <p>Profissionais capacitados e especialistas</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</section>
+
+<section class="sobre">
+    <div class="container">
+        <h2>Sobre Nós</h2>
+            <p>Na Barbearia Elite, tradição e modernidade se encontram para oferecer a melhor
+                experiência de cuidado masculino. Com uma equipe de barbeiros experientes,
+                proporcionamos cortes clássicos e modernos, além de serviços de barbearia
+                ersonalizados. Nosso compromisso é realçar o estilo único de cada cliente,
+                garantindo um atendimento acolhedor e de alta qualidade.
+            </p>
+    </div>
+</section>
+
+{% endblock %}
