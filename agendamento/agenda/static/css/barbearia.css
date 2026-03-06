@@ -1,0 +1,116 @@
+.hero {
+    background-image: url("/static/img/background-barbearia.png"); 
+    background-size: cover;        /* Faz a imagem cobrir toda a div */
+    background-position: center;   /* Centraliza */
+    background-repeat: no-repeat;  /* Não repete */
+    min-height: 100vh;                 /* Altura minima baseada no tamanho da tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-horarios {
+    min-height: 180px;
+}
+
+/* Camada escura para melhorar leitura do texto */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.hero-home {
+    background: url("/static/img/background-barbearia.png") center/cover no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.hero-home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero-content {
+    position: relative;
+    color: white;
+    width: auto;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    background: #d4a017;
+    color: black;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-cta:hover {
+    background: #b8860b;
+}
+
+.sobre {
+    padding: 80px 20px;
+    text-align: center;
+    background: #111;
+    color: white;
+}
+
+.sobre h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.sobre p {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.estatisticas {
+    padding: 80px 20px;
+    background: #1c1c1c;
+}
+
+.stats-grid {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card-stat {
+    background: #222;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    transition: 0.3s;
+}
+
+.card-stat h3 {
+    font-size: 2.5rem;
+    color: #d4a017;
+}
+
+.card-stat:hover {
+    transform: translateY(-5px);
+}
