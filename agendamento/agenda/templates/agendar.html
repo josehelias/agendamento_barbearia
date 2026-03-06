@@ -1,75 +1,92 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="hero-home">
-    <div class="hero-content">
 
-        <form method="POST" id="form-agendamento">{% csrf_token %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show shadow-lg border-0" role="alert"
+    style="background-color: #198754; color: white;">
+    <div class="d-flex align-items-center">
+        <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+        <div>
+            <strong>Excelente!</strong> {{ message }}
+        </div>
+    </div>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+<section class="hero-home py-5 align-items-center container-fluid">
+    <div class="hero-content row justify-content-center">
+
+        <form method="POST" id="form-agendamento" class="col-lg-10">{% csrf_token %}
             <h2 class="mb-4 text-center">Agendamento</h2>
 
+            <input type="hidden" name="servico" value="{{ servico_id }}">
+
             <!-- Barbeiro -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Selecione o barbeiro e a data para atendimento:</h5>
-                    <label for="barbeiro-select" class="form-label">Barbeiros disponíveis:</label>
-                    <select id="barbeiro-select" name="barb_nome" class="form-select">
-                        {% for barbeiro in barbeiros %}
-                        <option value="{{ barbeiro.id }}">
-                            {{ barbeiro.barb_nome }}
-                        </option>
-                        {% endfor %}
-                    </select>
+            <div class="row gx-5">
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-dark text-warning shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Barbeiro e datas para atendimento</h5>
+                            <label for="barbeiro-select" class="form-label">Barbeiros disponíveis:</label>
+                            <select id="barbeiro-select" name="barb_nome" class="form-select">
+                                {% for barbeiro in barbeiros %}
+                                <option value="{{ barbeiro.id }}">
+                                    {{ barbeiro.barb_nome }}
+                                </option>
+                                {% endfor %}
+                            </select>
 
-                    <div class="mb-4">
-                        <label for="id_data" class="form-label">Dia do atendimento:</label>
-                        <input type="date" id="id_data" name="data" min="{{ hoje }}" class="form-control">
+                            <div class="mt-4">
+                                <label for="id_data" class="form-label">Dia do atendimento:</label>
+                                <input type="date" id="id_data" name="data" min="{{ hoje }}" class="form-control">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Horários -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Horários disponíveis:</h5>
-                    <div class="row" id="grid-horarios">
+                <!-- Cliente -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm mb-4 bg-dark text-warning">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Dados do cliente</h5>
 
+                            <div class="mb-3">
+                                <label for="client_nome" class="form-label">Nome do cliente:</label>
+                                <input type="text" id="client_nome" name="client_nome" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="telefone" class="form-label">Telefone do cliente:</label>
+                                <input type="text" id="telefone" name="telefone" class="form-control" required>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Serviço -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Selecione o serviço desejado:</h5>
-                    <label for="servico" class="form-label">Serviços disponíveis:</label>
-                    <select id="servico" name="servico" class="form-select">
-                        {% for servico in servicos %}
-                        <option value="{{ servico.id }}">
-                            {{ servico.nome }}
-                        </option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
+                <!-- Horários -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm mb-4 bg-dark text-warning">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Horários disponíveis</h5>
+                            <div class="row g-2" id="grid-horarios">
 
-            <!-- Cliente -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Dados do cliente:</h5>
+                            </div>
 
-                    <div class="mb-3">
-                        <label for="client_nome" class="form-label">Nome do cliente:</label>
-                        <input type="text" id="client_nome" name="client_nome" class="form-control" required>
-                    </div>
-
-                    <div>
-                        <label for="telefone" class="form-label">Telefone do cliente:</label>
-                        <input type="text" id="telefone" name="telefone" class="form-control" required>
+                            <input type="hidden" name="hora" id="horario-selecionado">
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <button type="submit" class="save btn btn-dark w-100">Agendar</button>
+                <div class="col-lg-6 mb-4">
+                    <button type="submit" id="btn-finalizar" class="btn btn-warning w-100">Agendar</button>
+                </div>
+                
+            </div>
         </form>
     </div>
 </section>

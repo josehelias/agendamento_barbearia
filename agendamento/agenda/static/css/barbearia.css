@@ -10,6 +10,10 @@
     position: relative;
 }
 
+.card-horarios {
+    min-height: 180px;
+}
+
 /* Camada escura para melhorar leitura do texto */
 .overlay {
     background-color: rgba(0, 0, 0, 0.6);
@@ -27,6 +31,7 @@
     justify-content: center;
     text-align: center;
     position: relative;
+    width: 100%;
 }
 
 .hero-home::before {

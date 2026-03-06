@@ -24,16 +24,14 @@ function atualizarHorarios() {
                 return;
             }
 
-            let html = `
-                <label for="id_hora">Selecione um horário:</label>
-                <select id="id_hora" name="hora" required class="form-select mt-2">
-            `;
+            let html = ``;
 
             data.horarios.forEach(hora => {
-                html += `<option value="${hora}">${hora}</option>`;
+                html += `<div class="col-4 col-md-3 col-lg-2 mb-3">
+                <button type="button" class="btn btn-outline-warning w-100 btn-horario" data-horario="${hora}">
+                    ${hora}
+                </button></div>`;
             });
-
-            html += `</select>`;
 
             divHorarios.innerHTML = html;
 
@@ -42,6 +40,27 @@ function atualizarHorarios() {
             divHorarios.innerHTML = "Erro ao carregar horários.";
         });
 }
+
+function selecionarHorario(event) {
+    
+}
+
+document.addEventListener("click", function(e){
+
+    if(e.target.classList.contains("btn-horario")){
+
+        document.querySelectorAll(".btn-horario")
+        .forEach(btn => btn.classList.remove("active"))
+
+        e.target.classList.add("active")
+
+        document.getElementById("horario-selecionado").value =
+        e.target.dataset.horario
+    }
+
+})
+
+
 // Ouvintes de eventos (Listeners)
 selectBarbeiro.addEventListener('change', atualizarHorarios);
 inputData.addEventListener('change', atualizarHorarios);
