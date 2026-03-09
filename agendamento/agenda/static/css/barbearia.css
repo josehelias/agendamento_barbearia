@@ -1,26 +1,5 @@
-.hero {
-    background-image: url("/static/img/background-barbearia.png"); 
-    background-size: cover;        /* Faz a imagem cobrir toda a div */
-    background-position: center;   /* Centraliza */
-    background-repeat: no-repeat;  /* Não repete */
-    min-height: 100vh;                 /* Altura minima baseada no tamanho da tela */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
 .card-horarios {
     min-height: 180px;
-}
-
-/* Camada escura para melhorar leitura do texto */
-.overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 40px;
-    color: white;
-    text-align: center;
-    border-radius: 10px;
 }
 
 .hero-home {
@@ -83,11 +62,6 @@
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.6;
-}
-
-.estatisticas {
-    padding: 80px 20px;
-    background: #1c1c1c;
 }
 
 .stats-grid {
