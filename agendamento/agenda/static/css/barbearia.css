@@ -114,3 +114,20 @@
 .card-stat:hover {
     transform: translateY(-5px);
 }
+
+.redes-sociais a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#222;
+    color:#ffc107;
+    font-size:20px;
+    margin:8px;
+}
+
+.redes-sociais a:hover{
+    color: white;
+}
