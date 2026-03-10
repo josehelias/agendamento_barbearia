@@ -1,26 +1,5 @@
-.hero {
-    background-image: url("/static/img/background-barbearia.png"); 
-    background-size: cover;        /* Faz a imagem cobrir toda a div */
-    background-position: center;   /* Centraliza */
-    background-repeat: no-repeat;  /* Não repete */
-    min-height: 100vh;                 /* Altura minima baseada no tamanho da tela */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
 .card-horarios {
     min-height: 180px;
-}
-
-/* Camada escura para melhorar leitura do texto */
-.overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 40px;
-    color: white;
-    text-align: center;
-    border-radius: 10px;
 }
 
 .hero-home {
@@ -85,11 +64,6 @@
     line-height: 1.6;
 }
 
-.estatisticas {
-    padding: 80px 20px;
-    background: #1c1c1c;
-}
-
 .stats-grid {
     margin-top: 100px;
     display: grid;
@@ -113,4 +87,21 @@
 
 .card-stat:hover {
     transform: translateY(-5px);
+}
+
+.redes-sociais a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#222;
+    color:#ffc107;
+    font-size:20px;
+    margin:8px;
+}
+
+.redes-sociais a:hover{
+    color: white;
 }

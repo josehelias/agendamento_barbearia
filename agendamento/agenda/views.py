@@ -12,6 +12,10 @@ def home(request):
     template = loader.get_template('home.html')
     return HttpResponse(template.render({}, request))
 
+def contato(request):
+    template = loader.get_template('contato.html')
+    return HttpResponse(template.render({}, request))
+
 def servicos(request):
     template = loader.get_template('serviços.html')
     Servicos = Servico.objects.all().values()
