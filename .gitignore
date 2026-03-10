@@ -1,1 +1,21 @@
-myvenv
+# ambiente virtual
+venv/
+myvenv/
+.env/
+
+# python
+__pycache__/
+*.pyc
+
+# banco de dados
+db.sqlite3
+
+# arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# vscode
+.vscode/
+
+# migrations compiladas
+*.pyo
