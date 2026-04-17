@@ -19,3 +19,21 @@ Thumbs.db
 
 # migrations compiladas
 *.pyo
+**/migrations/__pycache__/
+
+# Logs
+*.log
+
+# Django local static/media
+media/
+staticfiles/
+static_root/
+
+# Manifest files
+node_modules/
+
+# Unit test reports
+htmlcov/
+.tox/
+.nosetests
+.pytest_cache/

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${db_postg}
+      - POSTGRES_USER=${user_postg}
+      - POSTGRES_PASSWORD=${pass_postg}
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_NAME=${db_postg}
+      - DATABASE_USER=${user_postg}
+      - DATABASE_PASSWORD=${pass_postg}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
