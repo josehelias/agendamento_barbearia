@@ -22,8 +22,7 @@
 
 .hero-content {
     position: relative;
-    color: white;
-    width: auto;
+    color: rgb(255, 255, 255);
 }
 
 .hero-content h1 {
